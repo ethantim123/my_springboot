@@ -12,7 +12,7 @@
 	<groupId>idv.tim</groupId>
 	<artifactId>springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>springboot</name>
 	<description>My Spring Boot Demo</description>
 	
@@ -27,11 +27,11 @@
 		</dependency>
 
 		<!-- 如果packaging為war則需要開啟以下 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-tomcat</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -54,35 +54,27 @@
 	</dependencies>
 	
 	<build>
-<!-- 		<resources> -->
-<!-- 			<resource> -->
-<!-- 		        <directory>src/main/webapp/WEB-INF/jsp</directory> -->
-<!-- 		        如果使用springboot自带的tomcat启动，则使用如下配置jsp路径 -->
-<!-- 		        <targetPath>META-INF/resources</targetPath> -->
-<!-- 		        如果使用maven启动本地tomcat启动，则使用如下配置 -->
-<!-- 		        <targetPath>/WEB-INF/jsp</targetPath> -->
-<!-- 		        <includes> -->
-<!-- 		            <include>**/*.*</include> -->
-<!-- 		        </includes> -->
-<!-- 		    </resource> -->
-<!-- 	         <resource> -->
-<!--                 <directory>src/main/webapp/WEB-INF/jsp</directory> -->
-<!--                 <targetPath>META-INF/resources</targetPath> -->
-<!--                 <includes> -->
-<!--                     <include>*.*</include> -->
-<!--                 </includes> -->
-<!--             </resource> -->
-<!-- 	         <resource>  -->
-<!-- 	             <directory>src/main/resources</directory> -->
-<!-- 	             <includes> -->
-<!-- 	                 <include>**/*.*</include> -->
-<!-- 	             </includes> -->
-<!-- 	         </resource> -->
-<!-- 	     </resources> -->
+		<resources>
+	         <resource>
+                <directory>src/main/webapp</directory>
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+	         <resource> 
+	             <directory>src/main/resources</directory>
+	             <includes>
+	                 <include>**/**</include>
+	             </includes>
+	         </resource>
+	     </resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!--如果打包为jar运行仍然出现404,打包插件版本设置为1.4.2.RELEASE -->
+				<version>1.4.2.RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>
